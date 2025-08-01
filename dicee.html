@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dicee</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Refresh Me</h1>
+      <h2 id="winner"> Click button to start Game.</h2>
+      <div class="dice-container">
+        <div class="dice">
+          <p>Player 1</p>
+          <img class="img1" src="./images/dice6.png" />
+        </div>
+
+        <div class="dice">
+          <p>Player 2</p>
+          <img class="img2" src="./images/dice6.png" />
+        </div>
+      </div>
+
+      <button class="btn" onclick="throwDice()">Throw Dice</button>
+    </div>
+
+    <footer>www 🎲 App Brewery 🎲 com</footer>
+    <script>
+      
+      function throwDice() {
+        var diceUrl = [
+          "./images/dice1.png",
+          "./images/dice2.png",
+          "./images/dice3.png",
+          "./images/dice4.png",
+          "./images/dice5.png",
+          "./images/dice6.png",
+        ];
+
+        var randomDicePlayer1 = Math.floor(Math.random() * diceUrl.length);
+        var randomDicePlayer2 = Math.floor(Math.random() * diceUrl.length);
+
+        var diceDisplay1 = diceUrl[randomDicePlayer1];
+        var diceDisplay2 = diceUrl[randomDicePlayer2];
+
+        document
+          .querySelector(".dice img.img1")
+          .setAttribute("src", diceDisplay1);
+        document
+          .querySelector(".dice img.img2")
+          .setAttribute("src", diceDisplay2);
+
+        // console.log(randomDicePlayer1, randomDicePlayer2);
+        if (randomDicePlayer1 > randomDicePlayer2) {
+          document.querySelector("#winner").innerHTML =
+            "<b>Player One Wins</b>";
+        } else if (randomDicePlayer2 > randomDicePlayer1) {
+          document.querySelector("#winner").innerHTML =
+            "<b>Player two Wins</b>";
+        } else {
+          document.querySelector("#winner").innerHTML =
+            "<b>Draw Play Again.</b>";
+        }
+      }
+    </script>
+  </body>
+</html>
